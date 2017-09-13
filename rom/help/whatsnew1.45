@@ -1,0 +1,8 @@
+New Features in ComputerCraft 1.45:
+
+. Added Advanced Computers
+. Added Advanced Monitors
+. New program: paint by nitrogenfingers
+. New API: paintutils
+. New term functions: term.setBackgroundColor, term.setTextColor, term.isColor
+. New turtle function: turtle.transferTo

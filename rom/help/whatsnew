@@ -1,0 +1,9 @@
+New Features in ComputerCraft 1.48:
+
+. Ported to Minecraft 1.4.6
+. Advanced Monitors now emit a "monitor_touch" event when right clicked
+. Advanced Monitors are now cheaper to craft
+. Turtles now get slightly less fuel from items
+. Computers can now interact with Command Blocks (if enabled in ComputerCraft.cfg)
+. New API function: os.day()
+. A Christmas surprise
