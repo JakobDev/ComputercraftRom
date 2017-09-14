@@ -1,0 +1,72 @@
+
+local bExit = false
+local sDir = (shell and shell.dir()) or ""
+local tEnv = {}
+
+local function fnRun( _sCommand, ... )
+	-- Look in the current dir first
+	local sPath = fs.combine( sDir, _sCommand )
+    if fs.exists( sPath ) and not fs.isDir( sPath ) then
+    	return os.run( tEnv, sPath, ... )
+    end
+    
+    -- Then look at programs
+    local sPath = fs.combine( "rom/programs", _sCommand )
+    if fs.exists( sPath ) and not fs.isDir( sPath ) then
+    	return os.run( tEnv, sPath, ... )
+    end
+    
+    -- Then fail
+    print( "No such program" )
+    return false
+end
+
+-- Install shell API
+tEnv["shell"] = {
+    ["exit"] = function( )
+      bExit = true
+    end,
+    ["dir"] = function( )
+      return sDir
+    end,
+    ["setDir"] = function( _sDir )
+      sDir = _sDir
+    end,
+    ["resolve"] = function( _sPath )
+      local sStartChar = string.sub( _sPath, 1, 1 )
+      if sStartChar == "/" or sStartChar == "\\" then
+      	return fs.combine( "", _sPath )
+      else
+      	return fs.combine( sDir, _sPath )
+      end
+    end,
+    ["run"] = function( _sCommand, ... )
+    	fnRun( _sCommand, ... )
+    end,
+}
+
+print( os.version() )
+
+local tArgs = { ... }
+if #tArgs > 0 then
+	fnRun( ... )
+end
+
+local tCommandHistory = {}
+while not bExit do
+	io.write( sDir .. "> " )
+
+	local sLine = read( nil, tCommandHistory )
+	table.insert( tCommandHistory, sLine )
+	
+	local tWords = {}
+	for match in string.gmatch(sLine, "[^ \t]+") do
+		table.insert( tWords, match )
+	end
+
+	local sCommand = tWords[1]
+	if sCommand then
+		fnRun( sCommand, unpack( tWords, 2 ) )
+	end
+end
+

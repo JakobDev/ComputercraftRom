@@ -1,0 +1,12 @@
+To set bundled outputs:
+rs.setBundledOutput("left", colors.red + colors.blue )
+rs.setBundledOutput("left", rs.getBundledOutput() + colors.yellow )
+rs.setBundledOutput("left", rs.getBundledOutput() - colors.red )
+rs.setBundledOutput("left", 1337 )
+
+To read bundled inputs:
+red = rs.testBundledInput( "right", colors.red )
+both = rs.testBundledInput( "right", colors.red + colors.blue ) 
+number = rs.getBundledOutput( "right" )
+
+Type "help colors" for the list of wire colors.

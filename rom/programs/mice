@@ -1,0 +1,29 @@
+
+local function note( side, wait )
+ redstone.setOutput(side, true)
+ sleep(0.1)
+ redstone.setOutput(side, false)
+ sleep(wait - 0.1)
+end
+
+note("right", 0.4)
+note("back", 0.4)
+note("left", 0.8)
+
+note("right", 0.4)
+note("back", 0.4)
+note("left", 0.8)
+
+note("left", 0.2)
+note("left", 0.2)
+note("left", 0.2)
+note("left", 0.2)
+
+note("back", 0.2)
+note("back", 0.2)
+note("back", 0.2)
+note("back", 0.2)
+
+note("right", 0.4)
+note("back", 0.4)
+note("left", 0.4)

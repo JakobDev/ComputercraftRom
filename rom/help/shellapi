@@ -1,0 +1,6 @@
+Functions in the Shell API:
+shell.exit()
+shell.dir()
+shell.setDir( path )
+shell.resolve( localpath )
+shell.run( program, arguments )

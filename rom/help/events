@@ -1,0 +1,6 @@
+os.pullEvent() will yield the program until an event occur, and return it. It is the basic programming model of CraftOS. The first value returned is the event name, and the second is the argument (if any). Events which can occur are:
+
+"char" when text is typed on the keyboard. Argument is the letter typed.
+"key" when a key is pressed on the keyboard. Argument is the numerical keycode.
+"timer" when a timeout started by os.startTimer() completes. Argument is the unique value returned by the startTimer() call.
+"redstone" when the state of any of the redstone inputs change.
