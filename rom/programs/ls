@@ -1,0 +1,55 @@
+
+local tArgs = { ... }
+
+-- Get all the files in the directory
+local sDir = shell.dir()
+if tArgs[1] ~= nil then
+	sDir = shell.resolve( tArgs[1] )
+end
+
+-- Sort into dirs/files, and calculate column count
+local tAll = fs.list( sDir )
+local tFiles = {}
+local tDirs = {}
+
+local w,h = term.getSize()
+local nMaxLen = w / 8
+for n, sItem in pairs( tAll ) do
+	local sPath = fs.combine( sDir, sItem )
+	nMaxLen = math.max( string.len( sItem ) + 1, nMaxLen )
+	if fs.isDir( sPath ) then
+		table.insert( tDirs, sItem )
+	else
+		table.insert( tFiles, sItem )
+	end
+end
+local nCols = math.floor( w / nMaxLen )
+
+-- Draw directories then files in column form
+local function drawCols( _t )
+  local nCol = 1
+  for n, s in ipairs( _t ) do
+  	if nCol > nCols then
+	  nCol = 1
+	  print()
+  	end
+  	
+  	local cx,cy = term.getCursorPos()
+  	cx = 1 + (nCol - 1) * (w / nCols)
+  	term.setCursorPos( cx, cy )
+  	term.write( s )
+  	
+  	nCol = nCol + 1  	
+  end
+  print()
+end
+
+if #tDirs > 0 then
+	table.sort( tDirs )
+	drawCols( tDirs )
+end
+
+if #tFiles > 0 then
+	table.sort( tFiles )
+	drawCols( tFiles )
+end

@@ -1,0 +1,11 @@
+Functions in the Filesystem API:
+fs.list( path )
+fs.exists( path )
+fs.isDir( path )
+fs.isReadOnly( path )
+fs.makeDir( path )
+fs.move( path, path )
+fs.copy( path, path )
+fs.delete( path )
+fs.combine( path, localpath )
+fs.open( path, "r" or "w" )

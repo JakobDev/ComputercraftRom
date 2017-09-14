@@ -1,0 +1,6 @@
+To learn the lua programming language, visit http://lua-users.org/wiki/TutorialDirectory.
+
+To experiment with lua in CraftOS, run the "lua" program and start typing code.
+To create programs, use "edit" to create files, then type their names in the shell to run them. If you name a program "startup", it will run automatically when the computer is turned on.
+
+To learn about the programming APIs availiable, type "help apis".

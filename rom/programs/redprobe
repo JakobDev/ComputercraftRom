@@ -1,0 +1,21 @@
+
+local tSides = { "top", "bottom", "left", "right", "front", "back" }
+
+io.write( "Active redstone inputs: " )
+
+local count = 0
+for n,sSide in ipairs(tSides) do
+	if redstone.getInput( sSide ) then
+		if count > 0 then
+			io.write( ", " )
+		end
+		io.write( sSide )
+		count = count + 1
+	end
+end
+
+if count > 0 then
+	print( "." )
+else
+	print( "None." )
+end

@@ -1,0 +1,8 @@
+This page describes the lua apis avaliable in CraftOS.
+
+coroutine, io, math, string, table and most of the globals behave the same as standard lua.
+Type "help os" to learn the operating system API.
+Type "help shellapi" to learn the shell API.
+Type "help fs" to learn the filesystem API.
+Type "help redstone" to learn the redstone API.
+Type "help term" to learn the terminal API.

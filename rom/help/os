@@ -1,0 +1,8 @@
+Functions in the Operating System API:
+os.version()
+os.run( environment, programpath, arguments )
+os.startTimer( timeout )
+os.sleep( timeout )
+os.pullEvent()
+os.shutdown()
+Type "help events" to learn about the event system.

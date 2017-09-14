@@ -1,0 +1,3 @@
+Functions in the Redstone API:
+redstone.getInput( side )
+redstone.setOutput( side, b )

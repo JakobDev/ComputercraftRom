@@ -1,0 +1,5 @@
+local tArgs = { ... }
+local nSleep = tonumber( tArgs[1] )
+if nSleep ~= nil and nSleep > 0 then
+  sleep( nSleep )
+end
